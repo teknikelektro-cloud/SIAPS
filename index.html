@@ -291,6 +291,7 @@
     /* ── Storage keys ── */
     const LS_MENUS = 'uts_menus';
     const LS_PWHASH = 'uts_pw_hash';
+    const API_URL   = 'https://script.google.com/macros/s/AKfycbyfldlVhMEaQMiHgGTeBygwtFhNR1bhnK2i5KO3xZyRlgKnHUhuXQhzuGYP4Tb1r3Ai/exec';
 
     const DEFAULT_MENUS = [
       {key:'surat',         name:'Surat',                  desc:'Sistem Informasi Surat',                    url:'https://script.google.com/a/macros/uts.ac.id/s/AKfycbxs9i8MbTgtQIW6JZr8uWncKyTxcoXFKbwnyc6Lt2cdhXI7huf2iB2WHpKQTEsAs_By_g/exec'},
@@ -313,7 +314,18 @@
     let _sessionAuthed = false;
 
     /* ── localStorage helpers ── */
-    function loadMenus() {
+    async function loadMenus() {
+      // Try Google Sheets API first
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        if (data.ok && Array.isArray(data.menus) && data.menus.length > 0) {
+          // Cache locally for offline fallback
+          try { localStorage.setItem(LS_MENUS, JSON.stringify(data.menus)); } catch(e) {}
+          return data.menus;
+        }
+      } catch(e) {}
+      // Fallback: localStorage cache
       try {
         const raw = localStorage.getItem(LS_MENUS);
         if (raw) {
@@ -326,6 +338,11 @@
 
     function saveMenusToStorage(items) {
       try { localStorage.setItem(LS_MENUS, JSON.stringify(items)); } catch(e) {}
+      // Sync to Google Sheets
+      fetch(API_URL, {
+        method: 'POST',
+        body: JSON.stringify({ menus: items })
+      }).catch(() => {});
     }
 
     function loadPwHash() {
@@ -628,8 +645,13 @@
     }
 
     /* ── Boot ── */
-    _liveItems = loadMenus();
-    renderGrid(_liveItems);
+    (async () => {
+      // Show loading state
+      const grid = document.getElementById('appsGrid');
+      if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;font-family:var(--font-ui)">Memuat menu...</div>';
+      _liveItems = await loadMenus();
+      renderGrid(_liveItems);
+    })();
   </script>
 </body>
 </html>
