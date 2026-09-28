@@ -1,12 +1,72 @@
 [
-  {"key":"surat","name":"Surat","desc":"Sistem Informasi Surat","url":"","icon":""},
-  {"key":"lab","name":"Laboratorium","desc":"Sistem Informasi Laboratorium","url":"","icon":""},
-  {"key":"ta","name":"Tugas Akhir","desc":"Sistem Informasi Tugas Akhir","url":"","icon":""},
-  {"key":"elib","name":"E-Library","desc":"Sistem Informasi Perpustakaan","url":"","icon":""},
-  {"key":"magang","name":"Magang","desc":"Sistem Informasi Magang","url":"","icon":""},
-  {"key":"survey","name":"Survey","desc":"Sistem Survey","url":"","icon":""},
-  {"key":"dokumen","name":"Dokumen","desc":"Sistem Informasi Dokumen","url":"","icon":""},
-  {"key":"evaluasi","name":"Evaluasi","desc":"Sistem Evaluasi","url":"","icon":""},
-  {"key":"mahasiswa","name":"Mahasiswa","desc":"Sistem Informasi Mahasiswa","url":"","icon":""},
-  {"key":"sdm","name":"Sumber Daya Manusia","desc":"Sistem Informasi SDM","url":"","icon":""}
+  {
+    "key": "surat",
+    "name": "Surat",
+    "desc": "Sistem Informasi Surat",
+    "url": "https://script.google.com/a/macros/uts.ac.id/s/AKfycbxs9i8MbTgtQIW6JZr8uWncKyTxcoXFKbwnyc6Lt2cdhXI7huf2iB2WHpKQTEsAs_By_g/exec",
+    "icon": ""
+  },
+  {
+    "key": "laboratorium",
+    "name": "Laboratorium",
+    "desc": "Sistem Informasi Laboratorium",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "tugasakhir",
+    "name": "Tugas Akhir",
+    "desc": "Sistem Informasi Tugas Akhir",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "elibrary",
+    "name": "E-Library",
+    "desc": "Sistem Informasi Perpustakaan",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "magang",
+    "name": "Magang",
+    "desc": "Sistem Informasi Magang",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "survey",
+    "name": "Survey",
+    "desc": "Sistem Survey",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "dokumen",
+    "name": "Dokumen",
+    "desc": "Sistem Informasi Dokumen",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "evaluasi",
+    "name": "Evaluasi",
+    "desc": "Sistem Evaluasi",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "mahasiswa",
+    "name": "Mahasiswa",
+    "desc": "Sistem Informasi Mahasiswa",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "sdm",
+    "name": "Sumber Daya Manusia",
+    "desc": "Sistem Informasi SDM",
+    "url": "",
+    "icon": ""
+  }
 ]

@@ -334,9 +334,12 @@
 
     /* ── localStorage helpers ── */
     async function loadMenus() {
-      // Try GitHub raw first (fast CDN)
+      // Try GitHub raw dengan timeout 4 detik
       try {
-        const res = await fetch(GH_RAW + '?t=' + Date.now());
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 4000);
+        const res = await fetch(GH_RAW + '?t=' + Date.now(), { signal: controller.signal });
+        clearTimeout(timer);
         if (res.ok) {
           const menus = await res.json();
           if (Array.isArray(menus) && menus.length > 0) {
@@ -344,7 +347,7 @@
             return menus;
           }
         }
-      } catch(e) {}
+      } catch(e) { /* timeout atau offline */ }
       // Fallback: localStorage cache
       try {
         const raw = localStorage.getItem(LS_MENUS);
@@ -353,6 +356,7 @@
           if (Array.isArray(parsed) && parsed.length > 0) return parsed;
         }
       } catch(e) {}
+      // Last resort: DEFAULT_MENUS
       return DEFAULT_MENUS.map(m => ({...m}));
     }
 
@@ -702,37 +706,30 @@
 
     /* ── Boot ── */
     (async () => {
-      // 1. Tampilkan cache localStorage LANGSUNG (instan)
+      // 1. Tampilkan cache ATAU default LANGSUNG tanpa tunggu network
       let cached = [];
       try {
         const raw = localStorage.getItem(LS_MENUS);
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed) && parsed.length > 0) cached = parsed;
-        }
+        if (raw) { const p = JSON.parse(raw); if (Array.isArray(p) && p.length > 0) cached = p; }
       } catch(e) {}
 
-      if (cached.length > 0) {
-        _liveItems = cached;
-        renderGrid(_liveItems);
-      } else {
-        // Belum ada cache, tampilkan loading
-        const grid = document.getElementById('appsGrid');
-        if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#aaa;font-size:13px;font-family:var(--font-ui)">Memuat menu...</div>';
-      }
+      _liveItems = cached.length > 0 ? cached : DEFAULT_MENUS.map(m => ({...m}));
+      renderGrid(_liveItems);
 
-      // 2. Fetch dari Google Sheets di background
+      // 2. Update dari GitHub di background
       try {
-        const res = await fetch(API_URL);
-        const data = await res.json();
-        if (data.ok && Array.isArray(data.menus) && data.menus.length > 0) {
-          try { localStorage.setItem(LS_MENUS, JSON.stringify(data.menus)); } catch(e) {}
-          _liveItems = data.menus;
-          renderGrid(_liveItems);
+        const controller = new AbortController();
+        setTimeout(() => controller.abort(), 5000);
+        const res = await fetch(GH_RAW + '?t=' + Date.now(), { signal: controller.signal });
+        if (res.ok) {
+          const menus = await res.json();
+          if (Array.isArray(menus) && menus.length > 0) {
+            try { localStorage.setItem(LS_MENUS, JSON.stringify(menus)); } catch(e) {}
+            _liveItems = menus;
+            renderGrid(_liveItems);
+          }
         }
-      } catch(e) {
-        // Offline atau API error — cache sudah tampil, tidak perlu lakukan apa-apa
-      }
+      } catch(e) { /* offline/timeout — tampilan sudah ada dari cache */ }
     })();
   </script>
 </body>
