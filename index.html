@@ -277,6 +277,23 @@
             <button class="btn-save" style="margin-left:auto;height:32px;padding:0 14px;font-size:12px" onclick="changePassword()">Simpan Kata Sandi</button>
           </div>
         </div>
+
+        <!-- Token GitHub -->
+        <div class="admin-change-pw" id="tokenSection" style="margin-top:16px">
+          <div class="admin-change-pw-title">Token GitHub</div>
+          <p style="font-size:12px;color:var(--text-secondary);margin:0 0 10px;font-family:var(--font-ui)">Token diperlukan untuk menyimpan menu ke GitHub. Disimpan hanya di perangkat ini.</p>
+          <div class="admin-field">
+            <label class="admin-label">Personal Access Token</label>
+            <div class="pw-input-wrap" style="position:relative">
+              <input class="admin-input" id="ghToken" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="padding-right:36px;font-family:monospace">
+              <button class="pw-toggle" onclick="toggleEye('ghToken','eyeToken')" type="button" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:2px" id="eyeToken"><svg id="eyeTokenIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div style="margin-top:10px">
+            <span class="admin-status" id="tokenStatus"></span>
+            <button class="btn-save" onclick="saveToken()" style="height:32px;padding:0 16px;font-size:13px">Simpan Token</button>
+          </div>
+        </div>
         <div style="display:flex;gap:10px;justify-content:flex-end;align-items:center;border-top:1px solid var(--border);padding-top:12px">
           <span class="admin-status" id="adminStatus"></span>
           <button class="btn-cancel" onclick="closeAdmin()">Batal</button>
@@ -291,7 +308,9 @@
     /* ── Storage keys ── */
     const LS_MENUS = 'uts_menus';
     const LS_PWHASH = 'uts_pw_hash';
-    const API_URL   = 'https://script.google.com/macros/s/AKfycbwSXPLN67CaKIo3RUtKaq9zzvPI_9vuS0bFXXffO2idOGLGxLodaqI2U7nLT2mzUbAb/exec';;
+    const GH_RAW    = 'https://raw.githubusercontent.com/teknikelektro-cloud/SIAPS/main/menus.json';
+    const GH_API    = 'https://api.github.com/repos/teknikelektro-cloud/SIAPS/contents/menus.json';
+    const LS_TOKEN  = 'uts_gh_token';;
 
     const DEFAULT_MENUS = [
       {key:'surat',         name:'Surat',                  desc:'Sistem Informasi Surat',                    url:'https://script.google.com/a/macros/uts.ac.id/s/AKfycbxs9i8MbTgtQIW6JZr8uWncKyTxcoXFKbwnyc6Lt2cdhXI7huf2iB2WHpKQTEsAs_By_g/exec'},
@@ -315,14 +334,15 @@
 
     /* ── localStorage helpers ── */
     async function loadMenus() {
-      // Try Google Sheets API first
+      // Try GitHub raw first (fast CDN)
       try {
-        const res = await fetch(API_URL);
-        const data = await res.json();
-        if (data.ok && Array.isArray(data.menus) && data.menus.length > 0) {
-          // Cache locally for offline fallback
-          try { localStorage.setItem(LS_MENUS, JSON.stringify(data.menus)); } catch(e) {}
-          return data.menus;
+        const res = await fetch(GH_RAW + '?t=' + Date.now());
+        if (res.ok) {
+          const menus = await res.json();
+          if (Array.isArray(menus) && menus.length > 0) {
+            try { localStorage.setItem(LS_MENUS, JSON.stringify(menus)); } catch(e) {}
+            return menus;
+          }
         }
       } catch(e) {}
       // Fallback: localStorage cache
@@ -336,13 +356,36 @@
       return DEFAULT_MENUS.map(m => ({...m}));
     }
 
-    function saveMenusToStorage(items) {
+    async function saveMenusToStorage(items) {
       try { localStorage.setItem(LS_MENUS, JSON.stringify(items)); } catch(e) {}
-      // Sync to Google Sheets via GET (no CORS preflight issue)
+      const token = localStorage.getItem(LS_TOKEN);
+      if (!token) { showTokenError(); return; }
       try {
-        const encoded = encodeURIComponent(JSON.stringify(items));
-        fetch(API_URL + '?action=save&data=' + encoded).catch(() => {});
-      } catch(e) {}
+        // Get current SHA (required by GitHub API to update file)
+        const check = await fetch(GH_API, {
+          headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' }
+        });
+        const fileInfo = check.ok ? await check.json() : null;
+        const sha = fileInfo && fileInfo.sha ? fileInfo.sha : undefined;
+        // Push new menus.json
+        const body = { message: 'Update menus', content: btoa(unescape(encodeURIComponent(JSON.stringify(items, null, 2)))), branch: 'main' };
+        if (sha) body.sha = sha;
+        const res = await fetch(GH_API, {
+          method: 'PUT',
+          headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        if (!res.ok) { const e = await res.json(); throw new Error(e.message); }
+      } catch(err) {
+        console.error('GitHub save error:', err);
+        const st = document.getElementById('adminStatus');
+        if (st) { st.textContent = '⚠ Gagal simpan: ' + err.message; st.className = 'admin-status error'; }
+      }
+    }
+
+    function showTokenError() {
+      const st = document.getElementById('adminStatus');
+      if (st) { st.textContent = '⚠ Token GitHub belum diset — masukkan di tab Pengaturan'; st.className = 'admin-status error'; }
     }
 
     function loadPwHash() {
@@ -463,6 +506,9 @@
       renderAdminList();
       document.getElementById('adminStatus').textContent = '';
       document.getElementById('adminStatus').className = 'admin-status';
+      // Populate token field
+      const tok = document.getElementById('ghToken');
+      if (tok) { try { tok.value = localStorage.getItem(LS_TOKEN) || ''; } catch(e) {} }
       document.getElementById('pwChangeStatus').textContent = '';
       document.getElementById('pwChangeStatus').className = 'admin-status';
       document.getElementById('newPw1').value = '';
@@ -624,6 +670,16 @@
       setTimeout(closeAdmin, 800);
     }
 
+    function saveToken() {
+      const val = (document.getElementById('ghToken')||{}).value || '';
+      const st  = document.getElementById('tokenStatus');
+      if (!val.startsWith('ghp_') && !val.startsWith('github_pat_')) {
+        st.textContent = '⚠ Token tidak valid'; st.className = 'admin-status error'; return;
+      }
+      try { localStorage.setItem(LS_TOKEN, val); } catch(e) {}
+      st.textContent = '✓ Token tersimpan'; st.className = 'admin-status ok';
+    }
+
     function exportHTML() {
       const current = JSON.parse(JSON.stringify(adminItems));
       // Read current HTML source
@@ -646,11 +702,37 @@
 
     /* ── Boot ── */
     (async () => {
-      // Show loading state
-      const grid = document.getElementById('appsGrid');
-      if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;font-family:var(--font-ui)">Memuat menu...</div>';
-      _liveItems = await loadMenus();
-      renderGrid(_liveItems);
+      // 1. Tampilkan cache localStorage LANGSUNG (instan)
+      let cached = [];
+      try {
+        const raw = localStorage.getItem(LS_MENUS);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) cached = parsed;
+        }
+      } catch(e) {}
+
+      if (cached.length > 0) {
+        _liveItems = cached;
+        renderGrid(_liveItems);
+      } else {
+        // Belum ada cache, tampilkan loading
+        const grid = document.getElementById('appsGrid');
+        if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#aaa;font-size:13px;font-family:var(--font-ui)">Memuat menu...</div>';
+      }
+
+      // 2. Fetch dari Google Sheets di background
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        if (data.ok && Array.isArray(data.menus) && data.menus.length > 0) {
+          try { localStorage.setItem(LS_MENUS, JSON.stringify(data.menus)); } catch(e) {}
+          _liveItems = data.menus;
+          renderGrid(_liveItems);
+        }
+      } catch(e) {
+        // Offline atau API error — cache sudah tampil, tidak perlu lakukan apa-apa
+      }
     })();
   </script>
 </body>
