@@ -14,16 +14,8 @@
       --shadow-hover:0 8px 28px rgba(204,31,38,0.15);--card-radius:14px;
       --font-display:"Plus Jakarta Sans",sans-serif;--font-ui:"Inter",sans-serif;
     }
-    @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
-      --bg:#1A1A1A;--surface:#242424;--sidebar-bg:#A81820;--text-primary:#F0F0F0;
-      --text-secondary:#9A9AA8;--border:rgba(255,255,255,0.08);
-      --shadow:0 2px 12px rgba(0,0,0,0.35);--shadow-hover:0 8px 28px rgba(0,0,0,0.5);
-    }}
-    :root[data-theme="dark"]{
-      --bg:#1A1A1A;--surface:#242424;--sidebar-bg:#A81820;--text-primary:#F0F0F0;
-      --text-secondary:#9A9AA8;--border:rgba(255,255,255,0.08);
-      --shadow:0 2px 12px rgba(0,0,0,0.35);--shadow-hover:0 8px 28px rgba(0,0,0,0.5);
-    }
+    
+    
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     body{font-family:var(--font-ui);background:var(--bg);color:var(--text-primary);display:flex;min-height:100vh;line-height:1.5}
     .sidebar{width:260px;flex-shrink:0;background:var(--sidebar-bg);display:flex;flex-direction:column;align-items:center;padding:40px 24px 32px;position:sticky;top:0;height:100vh;overflow-y:auto}
@@ -86,7 +78,7 @@
     .pw-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1100;align-items:center;justify-content:center;padding:16px}
     .pw-overlay.open{display:flex}
     .pw-box{background:#fff;border-radius:16px;width:100%;max-width:360px;box-shadow:0 24px 64px rgba(0,0,0,0.28);overflow:hidden}
-    @media(prefers-color-scheme:dark){.pw-box{background:#242424}}
+    
     .pw-header{padding:22px 24px 0;text-align:center}
     .pw-lock{width:44px;height:44px;border-radius:12px;background:rgba(204,31,38,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#CC1F26}
     .pw-lock svg{width:20px;height:20px}
@@ -112,7 +104,7 @@
     .admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:1000;align-items:center;justify-content:center;padding:16px}
     .admin-overlay.open{display:flex}
     .admin-panel{background:#fff;border-radius:16px;width:100%;max-width:660px;max-height:92vh;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.22);display:flex;flex-direction:column}
-    @media(prefers-color-scheme:dark){.admin-panel{background:#242424}}
+    
     .admin-header{padding:18px 24px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
     .admin-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text-primary)}
     .admin-subtitle{font-size:12px;color:var(--text-secondary);margin-top:2px}
@@ -149,6 +141,8 @@
     .admin-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;flex-shrink:0}
     .btn-cancel{height:36px;padding:0 16px;border-radius:8px;border:1.5px solid var(--border);background:none;color:var(--text-secondary);font-family:var(--font-ui);font-size:13px;font-weight:500;cursor:pointer}
     .btn-cancel:hover{background:var(--border)}
+    .btn-export{background:#1a6b3c;color:#fff;border:none;border-radius:8px;padding:0 16px;height:36px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-ui);transition:background .15s}
+    .btn-export:hover{background:#145530}
     .btn-save{height:36px;padding:0 20px;border-radius:8px;border:none;background:#CC1F26;color:#fff;font-family:var(--font-ui);font-size:13px;font-weight:600;cursor:pointer;transition:background 0.15s}
     .btn-save:hover{background:#a81820}
     .btn-save:disabled{opacity:0.55;cursor:not-allowed}
@@ -281,6 +275,7 @@
           <span class="admin-status" id="adminStatus"></span>
           <button class="btn-cancel" onclick="closeAdmin()">Batal</button>
           <button class="btn-save" id="btnSave" onclick="saveMenus()">Simpan Menu</button>
+          <button class="btn-export" id="btnExport" onclick="exportHTML()" title="Download HTML dengan menu terkini sebagai default — upload ke GitHub agar tampil di semua perangkat">⬇ Export HTML</button>
         </div>
       </div>
     </div>
@@ -604,6 +599,26 @@
       status.textContent = '✓ Tersimpan';
       status.className = 'admin-status ok';
       setTimeout(closeAdmin, 800);
+    }
+
+    function exportHTML() {
+      const current = JSON.parse(JSON.stringify(adminItems));
+      // Read current HTML source
+      const src = document.documentElement.outerHTML;
+      // Build replacement DEFAULT_MENUS string
+      const newDefault = 'const DEFAULT_MENUS = ' + JSON.stringify(current, null, 6) + ';';
+      // Replace existing DEFAULT_MENUS block
+      const updated = src.replace(/const DEFAULT_MENUS\s*=\s*\[[\s\S]*?\];/, newDefault);
+      // Download
+      const blob = new Blob([updated], {type:'text/html'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'portal-uts.html';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      const status = document.getElementById('adminStatus');
+      status.textContent = '✓ HTML berhasil diexport';
+      status.className = 'admin-status ok';
     }
 
     /* ── Boot ── */
