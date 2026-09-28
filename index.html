@@ -291,7 +291,7 @@
     /* ── Storage keys ── */
     const LS_MENUS = 'uts_menus';
     const LS_PWHASH = 'uts_pw_hash';
-    const API_URL   = 'https://script.google.com/macros/s/AKfycbyfldlVhMEaQMiHgGTeBygwtFhNR1bhnK2i5KO3xZyRlgKnHUhuXQhzuGYP4Tb1r3Ai/exec';
+    const API_URL   = 'https://script.google.com/macros/s/AKfycbwSXPLN67CaKIo3RUtKaq9zzvPI_9vuS0bFXXffO2idOGLGxLodaqI2U7nLT2mzUbAb/exec';;
 
     const DEFAULT_MENUS = [
       {key:'surat',         name:'Surat',                  desc:'Sistem Informasi Surat',                    url:'https://script.google.com/a/macros/uts.ac.id/s/AKfycbxs9i8MbTgtQIW6JZr8uWncKyTxcoXFKbwnyc6Lt2cdhXI7huf2iB2WHpKQTEsAs_By_g/exec'},
@@ -338,11 +338,11 @@
 
     function saveMenusToStorage(items) {
       try { localStorage.setItem(LS_MENUS, JSON.stringify(items)); } catch(e) {}
-      // Sync to Google Sheets
-      fetch(API_URL, {
-        method: 'POST',
-        body: JSON.stringify({ menus: items })
-      }).catch(() => {});
+      // Sync to Google Sheets via GET (no CORS preflight issue)
+      try {
+        const encoded = encodeURIComponent(JSON.stringify(items));
+        fetch(API_URL + '?action=save&data=' + encoded).catch(() => {});
+      } catch(e) {}
     }
 
     function loadPwHash() {
