@@ -1,72 +1,51 @@
 [
   {
-    "key": "surat",
-    "name": "Surat",
+    "key": "esurat",
+    "name": "E - Surat",
     "desc": "Sistem Informasi Surat",
     "url": "https://script.google.com/a/macros/uts.ac.id/s/AKfycbxs9i8MbTgtQIW6JZr8uWncKyTxcoXFKbwnyc6Lt2cdhXI7huf2iB2WHpKQTEsAs_By_g/exec",
     "icon": ""
   },
   {
-    "key": "laboratorium",
-    "name": "Laboratorium",
-    "desc": "Sistem Informasi Laboratorium",
-    "url": "",
-    "icon": ""
-  },
-  {
-    "key": "tugasakhir",
-    "name": "Tugas Akhir",
-    "desc": "Sistem Informasi Tugas Akhir",
-    "url": "",
-    "icon": ""
-  },
-  {
     "key": "elibrary",
-    "name": "E-Library",
+    "name": "E - Library",
     "desc": "Sistem Informasi Perpustakaan",
     "url": "",
     "icon": ""
   },
   {
-    "key": "magang",
-    "name": "Magang",
+    "key": "elaboratory",
+    "name": "E - Laboratory",
+    "desc": "Sistem Informasi Laboratorium",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "emonitoring",
+    "name": "E - Monitoring",
+    "desc": "Sistem Informasi Monitoring",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "eskripsi",
+    "name": "E - Skripsi",
+    "desc": "Sistem Informasi Skripsi",
+    "url": "",
+    "icon": ""
+  },
+  {
+    "key": "emagang",
+    "name": "E - Magang",
     "desc": "Sistem Informasi Magang",
     "url": "",
     "icon": ""
   },
   {
-    "key": "survey",
-    "name": "Survey",
-    "desc": "Sistem Survey",
-    "url": "",
-    "icon": ""
-  },
-  {
-    "key": "dokumen",
-    "name": "Dokumen",
-    "desc": "Sistem Informasi Dokumen",
-    "url": "",
-    "icon": ""
-  },
-  {
-    "key": "evaluasi",
-    "name": "Evaluasi",
-    "desc": "Sistem Evaluasi",
-    "url": "",
-    "icon": ""
-  },
-  {
-    "key": "mahasiswa",
-    "name": "Mahasiswa",
-    "desc": "Sistem Informasi Mahasiswa",
-    "url": "",
-    "icon": ""
-  },
-  {
-    "key": "sdm",
-    "name": "Sumber Daya Manusia",
-    "desc": "Sistem Informasi SDM",
-    "url": "",
+    "key": "website",
+    "name": "Website",
+    "desc": "Informasi Profil Program Studi",
+    "url": "https://sites.google.com/uts.ac.id/elektrouts",
     "icon": ""
   }
 ]
