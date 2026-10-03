@@ -14,15 +14,13 @@
       --shadow-hover:0 8px 28px rgba(204,31,38,0.15);--card-radius:14px;
       --font-display:"Plus Jakarta Sans",sans-serif;--font-ui:"Inter",sans-serif;
     }
-    
-    
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     body{font-family:var(--font-ui);background:var(--bg);color:var(--text-primary);display:flex;min-height:100vh;line-height:1.5}
     .sidebar{width:260px;flex-shrink:0;background:var(--sidebar-bg);display:flex;flex-direction:column;align-items:center;padding:40px 24px 32px;position:sticky;top:0;height:100vh;overflow-y:auto}
     .sidebar-logo{width:90px;height:90px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
     .sidebar-logo img{width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.18))}
     .sidebar-name{font-family:var(--font-display);font-weight:700;font-size:11.5px;color:var(--sidebar-text);text-align:center;letter-spacing:0.04em;line-height:1.5;text-wrap:balance;margin-bottom:4px;text-transform:uppercase}
-    .sidebar-prodi{font-family:var(--font-display);font-weight:800;font-size:13px;color:#E8630A;text-align:center;letter-spacing:0.01em;line-height:1.35;text-wrap:balance;margin-bottom:6px}
     .sidebar-tagline{font-size:11px;color:var(--sidebar-sub);text-align:center;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:32px}
     .sidebar-spacer{flex:1}
     .sidebar-motto{width:100%;font-size:12px;font-style:italic;color:#FFFFFF;text-align:center;line-height:1.7;margin-top:24px;margin-bottom:0;font-family:var(--font-display);padding:0 8px}
@@ -31,17 +29,12 @@
     .contact-icon{width:14px;height:14px;flex-shrink:0;color:rgba(255,255,255,0.55);margin-top:2px}
     .contact-link{font-size:10px;color:rgba(255,255,255,0.85);line-height:1.45;font-family:var(--font-ui);text-decoration:none}
     .main{flex:1;padding:28px 28px 20px;min-width:0;position:relative;background:#FFFFFF}
-    .watermark{position:fixed;top:50%;left:calc(260px + (100vw - 260px)/2);transform:translate(-50%,-50%);width:480px;height:480px;background-image:url("data:image/jpeg;base64,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");background-size:contain;background-repeat:no-repeat;background-position:center;opacity:0.07;pointer-events:none;z-index:0}
+    .watermark{position:fixed;top:50%;left:calc(260px + (100vw - 260px)/2);transform:translate(-50%,-50%);width:480px;height:480px;background-image:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCACuAMQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9U6KKKACiiigAooooAKKKKACiiigAopKhkuki++cUm7ase5IBjtilxXD6d8XPDWp+IZdEh1GE6hH/AA512v8A7vzV2gdWj3A5Fc1HE0q/8KXMaVKFWg7VY8pNRTN3zU6uoyFooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiikoAbxjpxRwBWB4n8X6X4Q0tr3V7yO0t1/jZsbq+Y/id+1Pe6w0tl4YjfTrRvka8f/Wt/u/3a+dzTPMFlUf38ve/lPoMpyLHZxPlw0Pd/m6Hv3xC+MHh74c27G+uVkuv4LWL5pG/CvlH4lftB+IvHrS28Mn9kaY3y+Rbt87f7zV5peXlxf3Tz3Msk1xK25pZW3O1Q7gvWvxXOOLMZmV6dL3aZ+9ZLwXgsstVr/vKgqyNC29Wbf/fVq9l+Gn7S2t+EfKstV3avpo+Xe7fvY/wDgX8VeNdaTha+YwOZ4rL6ntKE7H1uYZPg80p+zxMLn6G+B/iVoPxAs/O0m9WZ1+9C3yuv+8tdXwVzivzS0rWL/AEW+hvNOu5LSVOrxNtr6L+Gv7V85LafHuC2FiK2gvxBu/wBl+1ftmT8Z4bFWp4z3Z/8Akp+FZ5wLisfatg/3k/5ftH1PuoOK8uj/AGkPhk15bw+OPCA/tG2+T7Rbz/Y7pf8AZNfJeo/t4atL8QNG1XT4LFtCt1ZZ9Pk3FpWJ6lj/AHSAOld9L/wUT0Nrgr/wh2rfZy2DIJl3fls4r6eGDy+v70MSv+3fePiJ5zj6X7upRf8A27ofpZRXh/wp/bL+Hvxavf7P02+uNP1Jfv2upR+Sx9wc7Wr3AMNuMV4c6cqUuWasz6GjVhWjzQd0PoooPFQaC0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB/9k=");background-size:contain;background-repeat:no-repeat;background-position:center;opacity:0.07;pointer-events:none;z-index:0}
     .main>*:not(.watermark){position:relative;z-index:1}
     .main-header{margin-bottom:20px}
     .main-eyebrow{font-family:var(--font-ui);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px}
     .main-title{font-family:var(--font-display);font-size:22px;font-weight:800;color:#CC1F26;text-wrap:balance;line-height:1.2;margin-bottom:6px}
     .main-subtitle{font-size:14px;color:#CC1F26;max-width:480px}
-    .search-bar{margin-bottom:32px;position:relative;max-width:380px}
-    .search-bar input{width:100%;height:42px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-primary);font-family:var(--font-ui);font-size:14px;padding:0 16px 0 40px;outline:none;box-shadow:var(--shadow);transition:border-color 0.2s}
-    .search-bar input::placeholder{color:var(--text-secondary)}
-    .search-bar input:focus{border-color:var(--accent)}
-    .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-secondary);pointer-events:none}
     .apps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
     .app-card{background:#FFFFFF;border-radius:var(--card-radius);border:1.5px solid #CC1F26;box-shadow:0 2px 8px rgba(204,31,38,0.08);padding:16px 14px 14px;cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;transition:transform 0.18s ease,box-shadow 0.18s ease;position:relative;overflow:hidden}
     .app-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cat-color,#ccc);opacity:0;transition:opacity 0.18s ease}
@@ -58,7 +51,6 @@
     .empty-state{text-align:center;padding:60px 20px;color:var(--text-secondary);font-family:var(--font-ui)}
     .empty-state svg{width:48px;height:48px;margin:0 auto 16px;opacity:0.3;display:block;color:#CC1F26}
     .empty-state p{font-size:14px;margin-bottom:8px}
-    .empty-state small{font-size:12px;opacity:0.7}
     @media(max-width:1100px){.apps-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:700px){.apps-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:640px){
@@ -84,7 +76,6 @@
     .pw-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1100;align-items:center;justify-content:center;padding:16px}
     .pw-overlay.open{display:flex}
     .pw-box{background:#fff;border-radius:16px;width:100%;max-width:360px;box-shadow:0 24px 64px rgba(0,0,0,0.28);overflow:hidden}
-    
     .pw-header{padding:22px 24px 0;text-align:center}
     .pw-lock{width:44px;height:44px;border-radius:12px;background:rgba(204,31,38,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#CC1F26}
     .pw-lock svg{width:20px;height:20px}
@@ -110,7 +101,6 @@
     .admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:1000;align-items:center;justify-content:center;padding:16px}
     .admin-overlay.open{display:flex}
     .admin-panel{background:#fff;border-radius:16px;width:100%;max-width:660px;max-height:92vh;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.22);display:flex;flex-direction:column}
-    
     .admin-header{padding:18px 24px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
     .admin-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text-primary)}
     .admin-subtitle{font-size:12px;color:var(--text-secondary);margin-top:2px}
@@ -147,8 +137,6 @@
     .admin-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;flex-shrink:0}
     .btn-cancel{height:36px;padding:0 16px;border-radius:8px;border:1.5px solid var(--border);background:none;color:var(--text-secondary);font-family:var(--font-ui);font-size:13px;font-weight:500;cursor:pointer}
     .btn-cancel:hover{background:var(--border)}
-    .btn-export{background:#1a6b3c;color:#fff;border:none;border-radius:8px;padding:0 16px;height:36px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-ui);transition:background .15s}
-    .btn-export:hover{background:#145530}
     .btn-save{height:36px;padding:0 20px;border-radius:8px;border:none;background:#CC1F26;color:#fff;font-family:var(--font-ui);font-size:13px;font-weight:600;cursor:pointer;transition:background 0.15s}
     .btn-save:hover{background:#a81820}
     .btn-save:disabled{opacity:0.55;cursor:not-allowed}
@@ -162,7 +150,7 @@
 <body>
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <img src="data:image/jpeg;base64,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" alt="Logo UTS">
+      <img src="https://uts.ac.id/wp-content/uploads/2021/11/logo-UTS.png" alt="Logo UTS" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 80%22><rect width=%2280%22 height=%2280%22 rx=%2240%22 fill=%22%23CC1F26%22/><text x=%2240%22 y=%2248%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22 font-family=%22sans-serif%22 font-weight=%22bold%22>UTS</text></svg>'">
     </div>
     <div class="sidebar-name">Program Studi Teknik Elektro<br>Fakultas Rekayasa Sistem<br>Universitas Teknologi Sumbawa</div>
     <div class="sidebar-motto"><em>"Menjadi Rumah Pembelajaran yang Nyaman dan Menyenangkan untuk Tumbuh Utuh Sebagai Manusia dan Bermanfaat bagi Semesta Alam"</em></div>
@@ -206,10 +194,6 @@
         </button>
       </div>
     </div>
-    <div class="search-bar">
-      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="search" placeholder="Cari sistem informasi..." oninput="filterApps(this.value)">
-    </div>
     <div class="apps-grid" id="appsGrid"></div>
     <footer class="main-footer">
       <span>© 2026 Program Studi Teknik Elektro — Fakultas Rekayasa Sistem, Universitas Teknologi Sumbawa. Hak cipta dilindungi.</span>
@@ -246,7 +230,7 @@
       <div class="admin-header">
         <div>
           <div class="admin-title">Kelola Menu</div>
-          <div class="admin-subtitle">Tambah, edit, atau hapus menu. Urutkan sesuai kebutuhan.</div>
+          <div class="admin-subtitle">Edit URL link untuk setiap menu. Simpan → otomatis update ke GitHub → semua perangkat dapat data terbaru.</div>
         </div>
         <button class="admin-close" onclick="closeAdmin()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -277,28 +261,20 @@
             <button class="btn-save" style="margin-left:auto;height:32px;padding:0 14px;font-size:12px" onclick="changePassword()">Simpan Kata Sandi</button>
           </div>
         </div>
-
-        <!-- Token GitHub -->
-        <div class="admin-change-pw" id="tokenSection" style="margin-top:16px">
-          <div class="admin-change-pw-title">Token GitHub</div>
-          <p style="font-size:12px;color:var(--text-secondary);margin:0 0 10px;font-family:var(--font-ui)">Token diperlukan untuk menyimpan menu ke GitHub. Disimpan hanya di perangkat ini.</p>
-          <div class="admin-field">
-            <label class="admin-label">Personal Access Token</label>
-            <div class="pw-input-wrap" style="position:relative">
-              <input class="admin-input" id="ghToken" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="padding-right:36px;font-family:monospace">
-              <button class="pw-toggle" onclick="toggleEye('ghToken','eyeToken')" type="button" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:2px" id="eyeToken"><svg id="eyeTokenIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-            </div>
+        <div style="border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:8px">
+          <div class="admin-field" style="width:100%">
+            <label class="admin-label" style="display:flex;align-items:center;gap:6px">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              GitHub Token (disimpan di perangkat ini)
+            </label>
+            <input class="admin-input" id="ghTokenInput" type="password" placeholder="ghp_... (perlu saat pertama kali)" style="width:100%;box-sizing:border-box;font-family:monospace;font-size:12px" oninput="if(this.value)setGhToken(this.value)">
+            <div style="font-size:10px;color:var(--text-secondary);margin-top:3px">Token hanya disimpan di perangkat admin. Kosongkan jika sudah tersimpan sebelumnya.</div>
           </div>
-          <div style="margin-top:10px">
-            <span class="admin-status" id="tokenStatus"></span>
-            <button class="btn-save" onclick="saveToken()" style="height:32px;padding:0 16px;font-size:13px">Simpan Token</button>
+          <div style="display:flex;gap:10px;justify-content:flex-end;align-items:center">
+            <span class="admin-status" id="adminStatus"></span>
+            <button class="btn-cancel" onclick="closeAdmin()">Batal</button>
+            <button class="btn-save" id="btnSaveMenus" onclick="saveMenus()">Simpan Menu</button>
           </div>
-        </div>
-        <div style="display:flex;gap:10px;justify-content:flex-end;align-items:center;border-top:1px solid var(--border);padding-top:12px">
-          <span class="admin-status" id="adminStatus"></span>
-          <button class="btn-cancel" onclick="closeAdmin()">Batal</button>
-          <button class="btn-save" id="btnSave" onclick="saveMenus()">Simpan Menu</button>
-          <button class="btn-export" id="btnExport" onclick="exportHTML()" title="Download HTML dengan menu terkini sebagai default — upload ke GitHub agar tampil di semua perangkat">⬇ Export HTML</button>
         </div>
       </div>
     </div>
@@ -306,20 +282,25 @@
 
   <script>
     /* ── Storage keys ── */
-    const LS_MENUS = 'uts_menus';
+    const LS_MENUS  = 'uts_menus';
     const LS_PWHASH = 'uts_pw_hash';
-    const GH_RAW    = 'https://raw.githubusercontent.com/teknikelektro-cloud/SIAPS/main/menus.json';
-    const GH_API    = 'https://api.github.com/repos/teknikelektro-cloud/SIAPS/contents/menus.json';
-    const LS_TOKEN  = 'uts_gh_token';;
+    const LS_GHTOKEN = 'uts_gh_token';
+
+    /* ── GitHub config ── */
+    const GH_OWNER = 'indradarmawan09';
+    const GH_REPO  = 'E-Portal';
+    const GH_FILE  = 'data.json';
+    const GH_API   = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`;
 
     const DEFAULT_MENUS = [
-      {key:'esurat', name:'E - Surat', desc:'Sistem Informasi Surat', url:'https://script.google.com/a/macros/uts.ac.id/s/AKfycbxs9i8MbTgtQIW6JZr8uWncKyTxcoXFKbwnyc6Lt2cdhXI7huf2iB2WHpKQTEsAs_By_g/exec'},
-      {key:'elibrary', name:'E - Library', desc:'Sistem Informasi Perpustakaan', url:''},
-      {key:'elaboratory', name:'E - Laboratory', desc:'Sistem Informasi Laboratorium', url:''},
-      {key:'emonitoring', name:'E - Monitoring', desc:'Sistem Informasi Monitoring', url:''},
-      {key:'eskripsi', name:'E - Skripsi', desc:'Sistem Informasi Skripsi', url:''},
-      {key:'emagang', name:'E - Magang', desc:'Sistem Informasi Magang', url:''},
-      {key:'website', name:'Website', desc:'Informasi Profil Program Studi', url:'https://sites.google.com/uts.ac.id/elektrouts'},
+      {key:'esurat',      name:'E-Surat',       desc:'Sistem Informasi Surat',        url:''},
+      {key:'eskripsi',    name:'E-Skripsi',      desc:'Sistem Informasi Skripsi',      url:''},
+      {key:'emagang',     name:'E-Magang',       desc:'Sistem Informasi Magang',       url:''},
+      {key:'emonitoring', name:'E-Monitoring',   desc:'Sistem Informasi Monitoring',   url:''},
+      {key:'ejurnal',     name:'E-Jurnal',       desc:'Sistem Informasi Jurnal',       url:''},
+      {key:'elaboratory', name:'E-Laboratory',   desc:'Sistem Informasi Laboratorium', url:''},
+      {key:'elibrary',    name:'E-Library',      desc:'Sistem Informasi Perpustakaan', url:''},
+      {key:'website',     name:'Website',        desc:'Website Program Studi',         url:''},
     ];
 
     // Default password: "admin123"
@@ -330,63 +311,73 @@
     let _sessionAuthed = false;
 
     /* ── localStorage helpers ── */
-    async function loadMenus() {
-      // Try GitHub raw dengan timeout 4 detik
-      try {
-        const controller = new AbortController();
-        const timer = setTimeout(() => controller.abort(), 4000);
-        const res = await fetch(GH_RAW + '?t=' + Date.now(), { signal: controller.signal });
-        clearTimeout(timer);
-        if (res.ok) {
-          const menus = await res.json();
-          if (Array.isArray(menus) && menus.length > 0) {
-            try { localStorage.setItem(LS_MENUS, JSON.stringify(menus)); } catch(e) {}
-            return menus;
-          }
-        }
-      } catch(e) { /* timeout atau offline */ }
-      // Fallback: localStorage cache
+    function getCachedMenus() {
       try {
         const raw = localStorage.getItem(LS_MENUS);
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-        }
+        if (raw) { const p = JSON.parse(raw); if (Array.isArray(p) && p.length > 0) return p; }
       } catch(e) {}
-      // Last resort: DEFAULT_MENUS
-      return DEFAULT_MENUS.map(m => ({...m}));
+      return null;
     }
-
-    async function saveMenusToStorage(items) {
+    function setCachedMenus(items) {
       try { localStorage.setItem(LS_MENUS, JSON.stringify(items)); } catch(e) {}
-      const token = localStorage.getItem(LS_TOKEN);
-      if (!token) { showTokenError(); return; }
-      try {
-        // Get current SHA (required by GitHub API to update file)
-        const check = await fetch(GH_API, {
-          headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' }
-        });
-        const fileInfo = check.ok ? await check.json() : null;
-        const sha = fileInfo && fileInfo.sha ? fileInfo.sha : undefined;
-        // Push new menus.json
-        const body = { message: 'Update menus', content: btoa(unescape(encodeURIComponent(JSON.stringify(items, null, 2)))), branch: 'main' };
-        if (sha) body.sha = sha;
-        const res = await fetch(GH_API, {
-          method: 'PUT',
-          headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        });
-        if (!res.ok) { const e = await res.json(); throw new Error(e.message); }
-      } catch(err) {
-        console.error('GitHub save error:', err);
-        const st = document.getElementById('adminStatus');
-        if (st) { st.textContent = '⚠ Gagal simpan: ' + err.message; st.className = 'admin-status error'; }
-      }
+    }
+    function getGhToken() {
+      try { return localStorage.getItem(LS_GHTOKEN) || ''; } catch(e) { return ''; }
+    }
+    function setGhToken(t) {
+      try { localStorage.setItem(LS_GHTOKEN, t.trim()); } catch(e) {}
     }
 
-    function showTokenError() {
-      const st = document.getElementById('adminStatus');
-      if (st) { st.textContent = '⚠ Token GitHub belum diset — masukkan di tab Pengaturan'; st.className = 'admin-status error'; }
+    /* ── GitHub API helpers ── */
+    async function loadMenusFromGitHub() {
+      try {
+        // Gunakan GitHub API agar selalu dapat data terbaru (tanpa cache CDN)
+        const res = await fetch(GH_API, {
+          headers: { 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }
+        });
+        if (!res.ok) throw new Error(res.status);
+        const data = await res.json();
+        const content = JSON.parse(atob(data.content.replace(/\n/g, '')));
+        if (Array.isArray(content) && content.length > 0) {
+          setCachedMenus(content);
+          return content;
+        }
+      } catch(e) { console.warn('GitHub load failed:', e); }
+      return null;
+    }
+
+    async function saveMenusToGitHub(items) {
+      const token = getGhToken();
+      if (!token) throw new Error('Token GitHub belum diisi. Masukkan token di bagian bawah panel admin.');
+
+      // Ambil SHA file saat ini (wajib untuk update)
+      const getRes = await fetch(GH_API, {
+        headers: {
+          'Accept': 'application/vnd.github+json',
+          'Authorization': 'Bearer ' + token,
+          'X-GitHub-Api-Version': '2022-11-28'
+        }
+      });
+      if (!getRes.ok) throw new Error(`Gagal membaca file (${getRes.status}). Periksa token GitHub.`);
+      const fileData = await getRes.json();
+      const sha = fileData.sha;
+
+      // Update file
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(items, null, 2))));
+      const putRes = await fetch(GH_API, {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/vnd.github+json',
+          'Authorization': 'Bearer ' + token,
+          'Content-Type': 'application/json',
+          'X-GitHub-Api-Version': '2022-11-28'
+        },
+        body: JSON.stringify({ message: 'Update menu links', content, sha })
+      });
+      if (!putRes.ok) {
+        const err = await putRes.json();
+        throw new Error(err.message || putRes.status);
+      }
     }
 
     function loadPwHash() {
@@ -418,16 +409,12 @@
     const CARD_ICON  = `<svg fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
     const ARROW_ICON = `<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
 
+    function escHtml(s) {
+      return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
     function renderGrid(items) {
       const grid = document.getElementById('appsGrid');
-      if (!items || items.length === 0) {
-        grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          <p>Belum ada menu yang ditambahkan.</p>
-          <small>Klik "Kelola Link" untuk menambahkan menu sistem informasi.</small>
-        </div>`;
-        return;
-      }
       grid.style.gridTemplateColumns = `repeat(${getGridCols(items.length)},1fr)`;
       grid.innerHTML = items.map(m => {
         const hasUrl = !!m.url;
@@ -443,15 +430,6 @@
           <div class="card-arrow">${ARROW_ICON}</div>
         </a>`;
       }).join('');
-    }
-
-    /* ── Search ── */
-    function filterApps(query) {
-      const q = (query||'').toLowerCase().trim();
-      document.querySelectorAll('.app-card').forEach(card => {
-        const match = !q || card.dataset.name.includes(q) || card.textContent.toLowerCase().includes(q);
-        card.style.display = match ? '' : 'none';
-      });
     }
 
     /* ── Password gate ── */
@@ -507,13 +485,17 @@
       renderAdminList();
       document.getElementById('adminStatus').textContent = '';
       document.getElementById('adminStatus').className = 'admin-status';
-      // Populate token field
-      const tok = document.getElementById('ghToken');
-      if (tok) { try { tok.value = localStorage.getItem(LS_TOKEN) || ''; } catch(e) {} }
       document.getElementById('pwChangeStatus').textContent = '';
       document.getElementById('pwChangeStatus').className = 'admin-status';
       document.getElementById('newPw1').value = '';
       document.getElementById('newPw2').value = '';
+      // Tampilkan status token
+      const ti = document.getElementById('ghTokenInput');
+      if (ti) {
+        const saved = getGhToken();
+        ti.value = '';
+        ti.placeholder = saved ? '✓ Token tersimpan — kosongkan untuk tetap pakai yang lama' : 'ghp_... (wajib diisi pertama kali)';
+      }
       document.getElementById('adminOverlay').classList.add('open');
     }
 
@@ -524,7 +506,7 @@
       if (e.target === document.getElementById('adminOverlay')) closeAdmin();
     }
 
-    /* ── Change password (localStorage) ── */
+    /* ── Change password ── */
     async function changePassword() {
       const p1 = document.getElementById('newPw1').value;
       const p2 = document.getElementById('newPw2').value;
@@ -542,10 +524,6 @@
     }
 
     /* ── Admin CRUD list ── */
-    function escHtml(s) {
-      return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
-
     function renderAdminList() {
       const body = document.getElementById('adminBody');
       body.innerHTML = adminItems.map((m, i) => `
@@ -562,9 +540,6 @@
             </button>
             <button class="item-btn" onclick="moveItem(event,${i},1)" title="Turun">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <button class="item-btn del" onclick="deleteItem(event,${i})" title="Hapus">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
             </button>
           </div>
           <div class="admin-menu-item-body" id="amib_${i}">
@@ -583,11 +558,7 @@
               <input class="admin-input" id="ai_url_${i}" type="text" value="${escHtml(m.url)}" placeholder="https://..." oninput="syncItem(${i})" style="width:100%;box-sizing:border-box">
             </div>
           </div>
-        </div>`).join('') +
-        `<button class="admin-add-btn" onclick="addItem()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Tambah Menu
-        </button>`;
+        </div>`).join('');
     }
 
     function toggleAdminItem(i) {
@@ -606,31 +577,6 @@
         : '<em style="color:var(--text-secondary);font-style:italic;font-size:10px">Belum ada link</em>';
     }
 
-    function deleteItem(e, i) {
-      e.stopPropagation();
-      const btn = e.currentTarget;
-      if (btn.dataset.confirming) return;
-      btn.dataset.confirming = '1';
-      btn.style.display = 'none';
-      const row = btn.closest('.admin-menu-item-head');
-      const conf = document.createElement('div');
-      conf.className = 'del-confirm';
-      conf.innerHTML = `Hapus? <button class="yes" onclick="confirmDelete(event,${i})">Ya</button><button class="no" onclick="cancelDelete(event,${i})">Tidak</button>`;
-      row.appendChild(conf);
-    }
-    function confirmDelete(e, i) {
-      e.stopPropagation();
-      adminItems.splice(i, 1);
-      renderAdminList();
-    }
-    function cancelDelete(e, i) {
-      e.stopPropagation();
-      const row = e.currentTarget.closest('.admin-menu-item-head');
-      row.querySelector('.del-confirm').remove();
-      const btn = row.querySelector('.item-btn.del');
-      if (btn) { delete btn.dataset.confirming; btn.style.display = ''; }
-    }
-
     function moveItem(e, i, dir) {
       e.stopPropagation();
       const j = i + dir;
@@ -641,92 +587,45 @@
       if (body) body.classList.add('open');
     }
 
-    function addItem() {
-      adminItems.push({key:'menu_' + Date.now(), name:'Menu Baru', desc:'Deskripsi menu', url:''});
-      renderAdminList();
-      const idx = adminItems.length - 1;
-      const body = document.getElementById('amib_' + idx);
-      if (body) {
-        body.classList.add('open');
-        body.scrollIntoView({behavior:'smooth', block:'center'});
-        const inp = document.getElementById('ai_name_' + idx);
-        if (inp) { inp.focus(); inp.select(); }
-      }
-    }
-
-    /* ── Save menus to localStorage ── */
-    function saveMenus() {
-      const btn = document.getElementById('btnSave');
+    /* ── Save menus to GitHub + cache ── */
+    async function saveMenus() {
       const status = document.getElementById('adminStatus');
+      const btn = document.getElementById('btnSaveMenus');
+      // Simpan token jika diisi
+      const tokenInput = document.getElementById('ghTokenInput');
+      if (tokenInput && tokenInput.value.trim()) setGhToken(tokenInput.value.trim());
       adminItems.forEach((m, i) => {
         m.name = (document.getElementById('ai_name_' + i)||{}).value || m.name;
         m.desc = (document.getElementById('ai_desc_' + i)||{}).value || m.desc;
         m.url  = ((document.getElementById('ai_url_'  + i)||{}).value || '').trim();
       });
-      saveMenusToStorage(adminItems);
-      _liveItems = JSON.parse(JSON.stringify(adminItems));
-      renderGrid(_liveItems);
-      status.textContent = '✓ Tersimpan';
-      status.className = 'admin-status ok';
-      setTimeout(closeAdmin, 800);
-    }
-
-    function saveToken() {
-      const val = (document.getElementById('ghToken')||{}).value || '';
-      const st  = document.getElementById('tokenStatus');
-      if (!val.startsWith('ghp_') && !val.startsWith('github_pat_')) {
-        st.textContent = '⚠ Token tidak valid'; st.className = 'admin-status error'; return;
+      status.textContent = 'Menyimpan ke GitHub...'; status.className = 'admin-status';
+      if (btn) btn.disabled = true;
+      try {
+        await saveMenusToGitHub(adminItems);
+        setCachedMenus(adminItems);
+        _liveItems = JSON.parse(JSON.stringify(adminItems));
+        renderGrid(_liveItems);
+        status.textContent = '✓ Tersimpan! Semua perangkat akan mendapat data terbaru.';
+        status.className = 'admin-status ok';
+        setTimeout(closeAdmin, 1500);
+      } catch(e) {
+        status.textContent = '✕ ' + e.message;
+        status.className = 'admin-status err';
+        if (btn) btn.disabled = false;
       }
-      try { localStorage.setItem(LS_TOKEN, val); } catch(e) {}
-      st.textContent = '✓ Token tersimpan'; st.className = 'admin-status ok';
     }
 
-    function exportHTML() {
-      const current = JSON.parse(JSON.stringify(adminItems));
-      // Read current HTML source
-      const src = document.documentElement.outerHTML;
-      // Build replacement DEFAULT_MENUS string
-      const newDefault = 'const DEFAULT_MENUS = ' + JSON.stringify(current, null, 6) + ';';
-      // Replace existing DEFAULT_MENUS block
-      const updated = src.replace(/const DEFAULT_MENUS\s*=\s*\[[\s\S]*?\];/, newDefault);
-      // Download
-      const blob = new Blob([updated], {type:'text/html'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'portal-uts.html';
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-      const status = document.getElementById('adminStatus');
-      status.textContent = '✓ HTML berhasil diexport';
-      status.className = 'admin-status ok';
-    }
-
-    /* ── Boot ── */
-    (async () => {
-      // 1. Tampilkan cache ATAU default LANGSUNG tanpa tunggu network
-      let cached = [];
-      try {
-        const raw = localStorage.getItem(LS_MENUS);
-        if (raw) { const p = JSON.parse(raw); if (Array.isArray(p) && p.length > 0) cached = p; }
-      } catch(e) {}
-
-      _liveItems = cached.length > 0 ? cached : DEFAULT_MENUS.map(m => ({...m}));
+    /* ── Boot: tampilkan cache dulu, lalu fetch GitHub ── */
+    (async function boot() {
+      const cached = getCachedMenus();
+      _liveItems = cached || DEFAULT_MENUS.map(m => ({...m}));
       renderGrid(_liveItems);
-
-      // 2. Update dari GitHub di background
-      try {
-        const controller = new AbortController();
-        setTimeout(() => controller.abort(), 5000);
-        const res = await fetch(GH_RAW + '?t=' + Date.now(), { signal: controller.signal });
-        if (res.ok) {
-          const menus = await res.json();
-          if (Array.isArray(menus) && menus.length > 0) {
-            try { localStorage.setItem(LS_MENUS, JSON.stringify(menus)); } catch(e) {}
-            _liveItems = menus;
-            renderGrid(_liveItems);
-          }
-        }
-      } catch(e) { /* offline/timeout — tampilan sudah ada dari cache */ }
+      const fresh = await loadMenusFromGitHub();
+      if (fresh) {
+        _liveItems = fresh;
+        renderGrid(_liveItems);
+      }
     })();
   </script>
 </body>

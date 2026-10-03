@@ -1,0 +1,10 @@
+[
+  {"key":"esurat",      "name":"E-Surat",      "desc":"Sistem Informasi Surat",        "url":""},
+  {"key":"eskripsi",    "name":"E-Skripsi",    "desc":"Sistem Informasi Skripsi",      "url":""},
+  {"key":"emagang",     "name":"E-Magang",     "desc":"Sistem Informasi Magang",       "url":""},
+  {"key":"emonitoring", "name":"E-Monitoring", "desc":"Sistem Informasi Monitoring",   "url":""},
+  {"key":"ejurnal",     "name":"E-Jurnal",     "desc":"Sistem Informasi Jurnal",       "url":""},
+  {"key":"elaboratory", "name":"E-Laboratory", "desc":"Sistem Informasi Laboratorium", "url":""},
+  {"key":"elibrary",    "name":"E-Library",    "desc":"Sistem Informasi Perpustakaan", "url":""},
+  {"key":"website",     "name":"Website",      "desc":"Website Program Studi",         "url":""}
+]
